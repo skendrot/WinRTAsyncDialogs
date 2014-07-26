@@ -127,8 +127,7 @@ namespace VisuallyLocated.UI.Popups
                 return null;
             }
 
-            Style subHeaderTextStyle = Application.Current.Resources["LightSubheaderTextStyle"] as Style;
-            Style buttonStyle = Application.Current.Resources["LightButtonStyle"] as Style;
+            Style subHeaderTextStyle = Application.Current.Resources["SubheaderTextBlockStyle"] as Style;
 
             double width = Window.Current.Bounds.Width;
             double height = Window.Current.Bounds.Height;
@@ -136,7 +135,7 @@ namespace VisuallyLocated.UI.Popups
             var overlay = new Grid { Background = new SolidColorBrush(Colors.Black), Opacity = 0.2D };
             root.Children.Add(overlay);
 
-            var dialogPanel = new Grid { VerticalAlignment = VerticalAlignment.Center };
+            var dialogPanel = new Grid { VerticalAlignment = VerticalAlignment.Center, RequestedTheme = ElementTheme.Light };
             dialogPanel.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
             dialogPanel.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
             dialogPanel.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
@@ -176,7 +175,6 @@ namespace VisuallyLocated.UI.Popups
             if (Commands.Count == 0)
             {
                 Button button = new Button();
-                button.Style = buttonStyle;
                 button.Content = "Close";
                 button.MinWidth = 92;
                 button.Margin = new Thickness(20, 20, 0, 20);
@@ -189,7 +187,6 @@ namespace VisuallyLocated.UI.Popups
                 {
                     IUICommand currentCommand = command;
                     Button button = new Button();
-                    button.Style = buttonStyle;
                     button.Content = command.Label;
                     button.Margin = new Thickness(20, 20, 0, 20);
                     button.MinWidth = 92;

@@ -82,9 +82,8 @@ namespace VisuallyLocated.UI.Popups
                 return null;
             }
 
-            Style basicTextStyle = Application.Current.Resources["LightBasicTextStyle"] as Style;
-            Style subHeaderTextStyle = Application.Current.Resources["LightSubheaderTextStyle"] as Style;
-            Style buttonStyle = Application.Current.Resources["LightButtonStyle"] as Style;
+            Style basicTextStyle = Application.Current.Resources["BaseTextBlockStyle"] as Style;
+            Style subHeaderTextStyle = Application.Current.Resources["SubheaderTextBlockStyle"] as Style;
 
             double width = Window.Current.Bounds.Width;
             double height = Window.Current.Bounds.Height;
@@ -92,7 +91,7 @@ namespace VisuallyLocated.UI.Popups
             var overlay = new Grid { Background = new SolidColorBrush(Colors.Black), Opacity = 0.2D };
             rootPanel.Children.Add(overlay);
 
-            var dialog = new Grid { VerticalAlignment = VerticalAlignment.Center };
+            var dialog = new Grid { VerticalAlignment = VerticalAlignment.Center, RequestedTheme = ElementTheme.Light};
             dialog.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
             dialog.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
             dialog.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
@@ -161,7 +160,6 @@ namespace VisuallyLocated.UI.Popups
             grid.Children.Add(informationPanel);
 
             Button connectButton = new Button();
-            connectButton.Style = buttonStyle;
             connectButton.BorderThickness = new Thickness();
             connectButton.Padding = new Thickness(10, 5, 10, 5);
             // TODO: Fill with user input
@@ -176,7 +174,6 @@ namespace VisuallyLocated.UI.Popups
             dialog.Children.Add(connectButton);
 
             Button cancelButton = new Button();
-            cancelButton.Style = buttonStyle;
             cancelButton.BorderThickness = new Thickness();
             cancelButton.Padding = new Thickness(10, 5, 10, 5);
             cancelButton.Content = "Cancel";
